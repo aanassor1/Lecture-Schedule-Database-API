@@ -5,13 +5,11 @@ Abdul Aziz Nassor
 
 ### Description
 
-In the later semester of my second year in university, we were tasked with creating an in-depth Java Spring Web Application that involve using databases.
+In the later semester of my second year in university, we were tasked with creating a database that stores the schedules of lecturers and their sessions. The database would then be able to be modified using Java's Spring REST API.
 
-This task was based on a football league. We had to create base classes (Fixture, League, Player, Statistics, Team) and set the relationship for each of them in the database (one-to-many, many-to-many, many-to-one).
+Controllers had to be created to control each of these classes for creation and deletion in the database.
 
-Controllers had to be created to control each of these classes for creation and deletion in the database. An additional controller also displays the different objects on a web app view to the user.
-
-Repositories was also used to give the ability to look for different objects using their id, name etc.
+Repositories was also used to give the ability to look for different objects using their id, name etc. and to give lists to the user.
 
 ### Installation
 
@@ -22,8 +20,8 @@ Afterwards, open bash, locate the destinated file with 'cd', and use git clone o
 git clone https://github.com/aanassor1/Lecture-Schedule-Database-API.git
 ```
 
-After, create a java product on an IDE that allows packages. Then create a package for each folder (model, controller, repo) and then put in the respective children in each of those folders. Put the views folder into the main project folder, resouces and the Hw2Application.java file.
+After, create a java product on an IDE that allows packages. Then create a package for each folder (domain, controller, repo) and then put in the respective children in each of those folders. Put the resources folder, ErrorInfo.class and Part1Application in the main project folder.
 
 Access the application.resources folder and change the datasource url, username, and password to your database settings.
 
-Then, run the Hw2Application file and on your website, open up the website - http://localhost:8080/.
+Then, run the Part1Application file and on your website, open up the website - http://localhost:8080/.
