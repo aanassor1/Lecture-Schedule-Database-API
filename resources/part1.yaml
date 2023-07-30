@@ -1,0 +1,515 @@
+openapi: 3.0.1
+info:
+  title: CO2103 Coursework Part 1 Specification 
+  description: This is documentation for the CO2103 Part 1 Coursework.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/
+    description: Localhost server
+tags:
+  - name: Convenor
+    description: Everything about Convenor
+  - name: Module
+    description: Everything about Module
+  - name: Session
+    description: Everything about Session
+paths:
+  /convenors:
+    get:
+      tags: 
+      - Convenor
+      summary: Get list of all convenors
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Convenor'
+        204:
+          description: No content to show
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+    post:
+      tags:
+        - Convenor
+      summary: Creates a convenor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Convenor'
+      responses: 
+        201:
+          description: Created
+        409:
+          description: Convenor id already exists
+  /convenors/{id}:
+    get:
+      summary: Return a specific convenor
+      tags:
+        - Convenor
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK response 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Convenor'
+        404:
+          description: Cannot find convenor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+    delete:
+      tags:
+        - Convenor
+      summary: Deletes a specific convenor
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK response
+        404:
+          description: Cannot find convenor
+    put:
+      tags:
+        - Convenor
+      summary: Updates a specific convenor
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Convenor'
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Convenor'
+        404:
+          description: Cannot find convenor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+  /convenors/{id}/modules:
+    get:
+      summary: Return modules taught by a specific convenor
+      tags:
+        - Convenor
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK response 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        404:
+          description: Cannot find convenor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+  /modules:
+    get:
+      tags: 
+      - Module
+      summary: Get list of all modules
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+        204:
+          description: No content to show.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+    post:
+      tags:
+        - Module
+      summary: Creates a module
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Module'
+      responses: 
+        201:
+          description: Created
+        409:
+          description: Module id already exists
+  /modules/{code}:
+    get:
+      summary: Return a specific module
+      tags:
+        - Module
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK response 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        404:
+          description: Cannot find module
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+    delete:
+      tags:
+        - Module
+      summary: Deletes a specific module
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK response
+        404:
+          description: Cannot find module
+    patch:
+      tags:
+        - Module
+      summary: Updates a specific module
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Module'
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        404:
+          description: Nothing to delete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+  /modules/{code}/sessions:
+    get:
+      summary: Return all sessions under a specific module
+      tags:
+        - Module
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK response 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        404:
+          description: Cannot find convenor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+  /modules/{code}/sessions/{id}:
+    get:
+      summary: Return a specific session id
+      tags:
+        - Module
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK response 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        404:
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+    delete:
+      tags:
+        - Module
+      summary: Deletes a specific session
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK response
+        404:
+          description: Nothing to delete
+    patch:
+      tags:
+        - Module
+      summary: Updates a specific session
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Module'
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        404:
+          description: Nothing to delete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+    put:
+      tags:
+        - Module
+      summary: Updates a specific session
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Module'
+      responses:
+        200:
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        404:
+          description: Nothing to delete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+    post:
+      tags:
+        - Module
+      summary: Creates a session
+      parameters:
+        - in: path
+          name: code
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Session'
+      responses: 
+        201:
+          description: Created
+        409:
+          description: Session id already exists
+  /sessions:
+    delete:
+      tags:
+        - Session
+      summary: Deletes all sessions
+      responses:
+        200:
+          description: Deleted all
+        404:
+          description: Nothing to delete
+    get:
+      tags:
+          - Session
+      parameters:
+        - in: query
+          name: convenor
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: module
+          schema:
+            type: string
+          required: false
+      responses:
+        200:
+          description: OK response
+        404:
+          description: Nothing to show.
+          
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        message:
+          type: string
+          default: Error message
+    Convenor:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          description: The lecturer's name
+        position:
+          type: string
+          enum: [GTA, Lecturer, Professor]
+          description: Either "GTA", "Lecturer", or "Professor"
+        modulesTaught:
+          type: array
+          items:
+            $ref: '#/components/schemas/Module'
+          description: List of modules this convenor teaches.
+    Module:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The module's code and unique identifier.
+        title:
+          type: string
+          description: The module's title.
+        level:
+          type: integer
+          minimum: 1
+          maximum: 4
+          description: The year in which the module is taught.
+        optional:
+          type: boolean
+          description: Indicates whether the module is optional or mandatory.
+        convenors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Convenor'
+          description: List of convenors that teach this module.
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
+          description: List of all sessions for this module.
+    Session:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        topic:
+          type: string
+          description: The topic to be covererd in the session.
+        datetime:
+          type: string
+          format: date-time
+          description: Indicates the date and time when the session is taking place.
+        duration:
+          type: integer
+          description: The duration of the session in minutes.
+        moduleId:
+          type: integer
+          description: The id of the module this session is under.
