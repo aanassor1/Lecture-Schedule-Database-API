@@ -5,12 +5,21 @@ Abdul Aziz Nassor
 
 ### Description
 
-In the later semester of my second year in university, we were tasked with creating a database that stores the schedules of lecturers and their sessions. The database would then be able to be modified using Java's Spring REST API.
+A web application that manipulates objects in a database using REST API. 
+
+A database is made that stores the schedules of lecturers and their sessions. The database would then be able to be modified using Java's Spring REST API.
 
 Controllers had to be created to control each of these classes for creation and deletion in the database.
 
 Repositories was also used to give the ability to look for different objects using their id, name etc. and to give lists to the user.
 
+### What I learnt
+* How to use REST Api
+* Database creation
+* Controllers
+* Object Manipulation
+* Repositories
+  
 ### Installation
 
 Go onto Github, find the project and clone the repository.
