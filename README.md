@@ -14,11 +14,10 @@ Controllers had to be created to control each of these classes for creation and 
 Repositories was also used to give the ability to look for different objects using their id, name etc. and to give lists to the user.
 
 ### What I learnt
-* How to use REST Api
-* Database creation
-* Controllers
-* Object Manipulation
-* Repositories
+* Java
+* REST Api
+* Database Creation
+* Controllers/Repositories for Object Manipulation
   
 ### Installation
 
