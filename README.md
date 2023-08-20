@@ -1,9 +1,9 @@
 # Lecture Schedule Database API
 
-### Author
+## Author
 Abdul Aziz Nassor
 
-### Description
+## Description
 
 A web application that manipulates objects in a database using REST API. 
 
@@ -13,13 +13,13 @@ Controllers had to be created to control each of these classes for creation and 
 
 Repositories was also used to give the ability to look for different objects using their id, name etc. and to give lists to the user.
 
-### What I learnt
+## What I learnt
 * Java
 * REST Api
 * Database Creation
 * Controllers/Repositories for Object Manipulation
   
-### Installation
+## Installation
 
 Go onto Github, find the project and clone the repository.
 Afterwards, open bash, locate the destinated file with 'cd', and use git clone on the cloned repository.
